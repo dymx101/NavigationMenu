@@ -42,6 +42,7 @@
         self.table.dataSource = self;
         self.table.backgroundColor = [UIColor clearColor];
         self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.table.scrollEnabled = NO;
         
         UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.table.bounds.size.height, [SIMenuConfiguration menuWidth], self.table.bounds.size.height)];
         header.backgroundColor = [UIColor color:[SIMenuConfiguration itemsColor] withAlpha:[SIMenuConfiguration menuAlpha]];

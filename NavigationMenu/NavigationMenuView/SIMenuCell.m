@@ -22,7 +22,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = [UIColor color:[SIMenuConfiguration itemsColor] withAlpha:[SIMenuConfiguration menuAlpha]];
+        self.contentView.backgroundColor = [UIColor colorWithWhite:.2f alpha:.8f];//[UIColor color:[SIMenuConfiguration itemsColor] withAlpha:[SIMenuConfiguration menuAlpha]];
+        
+        //
         self.textLabel.textColor = [SIMenuConfiguration itemTextColor];
         self.textLabel.textAlignment = NSTextAlignmentCenter;
         self.textLabel.shadowColor = [UIColor darkGrayColor];
@@ -30,12 +32,19 @@
         
         self.selectionStyle = UITableViewCellEditingStyleNone;
         
+        //
         self.cellSelection = [[SICellSelection alloc] initWithFrame:self.bounds andColor:[SIMenuConfiguration selectionColor]];
-        [self.cellSelection.layer setCornerRadius:6.0];
+        //[self.cellSelection.layer setCornerRadius:6.0];
         [self.cellSelection.layer setMasksToBounds:YES];
         
         self.cellSelection.alpha = 0.0;
         [self.contentView insertSubview:self.cellSelection belowSubview:self.textLabel];
+        
+        CGRect logoRc = CGRectMake(5, 5, [SIMenuConfiguration logoSize], [SIMenuConfiguration logoSize]);
+        _ivLogo = [[UIImageView alloc] initWithFrame:logoRc];
+        _ivLogo.contentMode = UIViewContentModeScaleAspectFill;
+        _ivLogo.image = [UIImage imageNamed:@"tab_company_selected"];
+        [self.contentView insertSubview:_ivLogo aboveSubview:self.textLabel];
     }
     return self;
 }
@@ -72,8 +81,11 @@
     } else {
         alpha = 0.0;
     }
+    
+    self.cellSelection.alpha = alpha;
+    
     [UIView animateWithDuration:[SIMenuConfiguration selectionSpeed] animations:^{
-        self.cellSelection.alpha = alpha;
+        
     } completion:^(BOOL finished) {
         completion();
     }];
@@ -83,5 +95,27 @@
 {
     self.cellSelection = nil;
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //NSLog(@"touches began");
+    self.cellSelection.alpha = 1;
+    [super touchesBegan:touches withEvent:event];
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //NSLog(@"touches ended");
+    self.cellSelection.alpha = 0;
+    [super touchesEnded:touches withEvent:event];
+}
+
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //NSLog(@"touches cancelled");
+    self.cellSelection.alpha = 0;
+    [super touchesCancelled:touches withEvent:event];
+}
+
 
 @end

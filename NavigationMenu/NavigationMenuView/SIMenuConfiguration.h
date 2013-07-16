@@ -15,6 +15,8 @@
 //Menu item height
 + (float)itemCellHeight;
 
++ (float)logoSize;
+
 //Animation duration of menu appearence
 + (float)animationDuration;
 

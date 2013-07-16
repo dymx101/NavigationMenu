@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SIMenuCell : UITableViewCell
+@property (strong, nonatomic) UIImageView       *ivLogo;
+
 - (void)setSelected:(BOOL)selected withCompletionBlock:(void (^)())completion;
 @end

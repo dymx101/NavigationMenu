@@ -34,15 +34,15 @@
     CGFloat alpha;
     
     if([self.baseColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha]){
-        brightness -= 0.35;
+        brightness -= .2f;
     }
     
     UIColor * highColor = self.baseColor;
-    UIColor * lowColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
+    //UIColor * lowColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:alpha];
     
     CAGradientLayer * gradient = [CAGradientLayer layer];
     [gradient setFrame:[self bounds]];
-    [gradient setColors:[NSArray arrayWithObjects:(id)[highColor CGColor], (id)[lowColor CGColor], nil]];
+    [gradient setColors:[NSArray arrayWithObjects:(id)[highColor CGColor], (id)[highColor CGColor], nil]];
     [[self layer] addSublayer:gradient];
 
     [self setNeedsDisplay];     

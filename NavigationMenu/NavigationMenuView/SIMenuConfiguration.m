@@ -22,6 +22,11 @@
     return 44.0f;
 }
 
++ (float)logoSize
+{
+    return 34.f;
+}
+
 //Animation duration of menu appearence
 + (float)animationDuration
 {
@@ -49,7 +54,7 @@
 //Arrow image near title
 + (UIImage *)arrowImage
 {
-    return [UIImage imageNamed:@"arrow_down.png"];
+    return [UIImage imageNamed:@"arrow_down1"];
 }
 
 //Distance between Title and arrow image
@@ -61,7 +66,7 @@
 //Items color in menu
 + (UIColor *)itemsColor
 {
-    return [UIColor blackColor];
+    return [UIColor colorWithWhite:.5f alpha:1];
 }
 
 + (UIColor *)mainColor
@@ -81,6 +86,7 @@
 
 + (UIColor *)selectionColor
 {
-    return [UIColor colorWithRed:45.0/255.0 green:105.0/255.0 blue:166.0/255.0 alpha:1.0];
+    float grayFactor = 10 / 255.f;
+    return [UIColor colorWithRed:grayFactor green:grayFactor blue:grayFactor alpha:1.0];
 }
 @end
