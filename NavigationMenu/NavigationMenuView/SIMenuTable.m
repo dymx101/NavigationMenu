@@ -20,15 +20,17 @@
 }
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray *images;
 @end
 
 @implementation SIMenuTable
 
-- (id)initWithFrame:(CGRect)frame items:(NSArray *)items
+- (id)initWithFrame:(CGRect)frame items:(NSArray *)items images:(NSArray *)aImages
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.items = [NSArray arrayWithArray:items];
+        self.images = [NSArray arrayWithArray:aImages];
         
         self.layer.backgroundColor = [UIColor color:[SIMenuConfiguration mainColor] withAlpha:0.0].CGColor;
         self.clipsToBounds = YES;
@@ -150,6 +152,9 @@
     }
     
     cell.textLabel.text = [self.items objectAtIndex:indexPath.row];
+    
+    NSString *imageName = self.images[indexPath.row];
+    cell.ivLogo.image = [UIImage imageNamed:imageName];
     
     return cell;
 }

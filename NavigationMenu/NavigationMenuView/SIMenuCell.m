@@ -43,7 +43,7 @@
         CGRect logoRc = CGRectMake(5, 5, [SIMenuConfiguration logoSize], [SIMenuConfiguration logoSize]);
         _ivLogo = [[UIImageView alloc] initWithFrame:logoRc];
         _ivLogo.contentMode = UIViewContentModeScaleAspectFill;
-        _ivLogo.image = [UIImage imageNamed:@"tab_company_selected"];
+        //_ivLogo.image = [UIImage imageNamed:@"tab_company_selected"];
         [self.contentView insertSubview:_ivLogo aboveSubview:self.textLabel];
     }
     return self;

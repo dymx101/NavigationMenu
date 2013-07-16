@@ -15,9 +15,10 @@
     [super viewDidLoad];
     if (self.navigationItem) {
         CGRect frame = CGRectMake(0.0, 0.0, 200.0, self.navigationController.navigationBar.bounds.size.height);
-        SINavigationMenuView *menu = [[SINavigationMenuView alloc] initWithFrame:frame title:@"Menu"];
-        [menu displayMenuInView:self.view];
-        menu.items = @[@"News", @"Top Articles", @"Messages", @"Account", @"Settings", @"Top Articles", @"Messages"];
+        SINavigationMenuView *menu = [[SINavigationMenuView alloc] initWithFrame:frame title:@""];
+        [menu displayMenuInView:self.navigationController.topViewController.view];
+        menu.items = @[@"Companies", @"People", @"Saved", @"Settings"];
+        menu.images = @[@"tab_company_selected", @"tab_people_selected", @"tab_saved_selected", @"tab_settings_selected"];
         menu.delegate = self;
         self.navigationItem.titleView = menu;
     }
