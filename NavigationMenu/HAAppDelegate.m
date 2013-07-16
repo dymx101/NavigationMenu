@@ -17,6 +17,7 @@
     self.viewController = [[HAViewController alloc] initWithNibName:@"HAViewController" bundle:nil];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     [self.window makeKeyAndVisible];
+    [[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
     return YES;
 }
 
